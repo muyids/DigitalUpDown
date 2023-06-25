@@ -1,0 +1,9 @@
+.vscode/
+tmp/
+bin/
+gen/
+internal-mir/
+mir/
+*.prg
+*.prg.debug.xml
+

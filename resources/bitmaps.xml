@@ -1,0 +1,8 @@
+<resources>
+    <bitmap id="LauncherIcon" filename="images/icon.png" />
+    <bitmap id="HeartRateIcon" filename="images/heart_rate.png" />
+    <bitmap id="BatteryMidIcon" filename="images/battery_mid.png" />
+    <bitmap id="BatteryLowIcon" filename="images/battery_low.png" />
+    <bitmap id="CalorieIcon" filename="images/calorie.png" />
+    <bitmap id="StepsIcon" filename="images/steps.png" />
+</resources>

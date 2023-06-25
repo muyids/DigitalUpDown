@@ -1,0 +1,6 @@
+<resources>
+    <drawable-list id="OutCricle" >
+        <!-- <shape type="circle" x="center" y="center" radius="95%" color="Gfx.COLOR_RED" /> -->
+        <!-- <shape type="arc" x="center" y="center" radius="95%" startAngle="45" sweepAngle="270" color="Gfx.COLOR_RED" />  -->
+    </drawable-list>
+</resources>
