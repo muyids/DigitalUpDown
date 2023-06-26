@@ -97,12 +97,12 @@ class DigitalUpDownView extends WatchUi.WatchFace {
         var calStr = activityMonitor.calories.toString();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawBitmap(rightXBase,  height / 2 - smallFontHeight, _calorieBitmap);
-        dc.drawText(rightXBase + _heartBitmap.getWidth() + dc.getTextWidthInPixels(calStr, _font) / 2, height / 2 - smallFontHeight -7, _font, calStr, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rightXBase + _heartBitmap.getWidth() + dc.getTextWidthInPixels(calStr, _font) / 2, height / 2 - smallFontHeight - 7, _font, calStr, Graphics.TEXT_JUSTIFY_CENTER);
 
         // Draw the steps in the middle of the screen
         var stepsStr = activityMonitor.steps.toString();
         dc.drawBitmap(rightXBase,  height / 2, _stepsBitmap);
-        dc.drawText(rightXBase+ _heartBitmap.getWidth() + dc.getTextWidthInPixels(stepsStr, _font) / 2, height / 2 -7 , _font, stepsStr, Graphics.TEXT_JUSTIFY_CENTER );
+        dc.drawText(rightXBase+ _heartBitmap.getWidth() + dc.getTextWidthInPixels(stepsStr, _font) / 2, height / 2 - 7, _font, stepsStr, Graphics.TEXT_JUSTIFY_CENTER );
 
         // Draw the heart rate in the bottom of the screen
         var heartStr = "--";
@@ -112,7 +112,7 @@ class DigitalUpDownView extends WatchUi.WatchFace {
         } 
 
         dc.drawBitmap(rightXBase,  height / 2 + smallFontHeight, _heartBitmap);
-        dc.drawText(rightXBase + _heartBitmap.getWidth() + dc.getTextWidthInPixels(heartStr, _font) / 2, height / 2 + smallFontHeight -7 , _font, heartStr, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rightXBase + _heartBitmap.getWidth() + dc.getTextWidthInPixels(heartStr, _font) / 2, height / 2 + smallFontHeight - 7, _font, heartStr, Graphics.TEXT_JUSTIFY_CENTER);
 
         // Draw the battery level in the bottom of the screen
         var batteryLevel = System.getSystemStats().battery.toLong();
@@ -121,7 +121,7 @@ class DigitalUpDownView extends WatchUi.WatchFace {
         if (batteryLevel < 20) {
             dc.drawBitmap(width / 2 - batteryLevelWidth, height / 2 + largeFontHeight + ( smallFontHeight- _batteryLowBitmap.getWidth())/ 2, _batteryLowBitmap);
         } else {
-            dc.drawBitmap(width / 2 - batteryLevelWidth, height / 2 + largeFontHeight+ ( smallFontHeight- _batteryLowBitmap.getWidth())/ 2, _batteryMidBitmap);
+            dc.drawBitmap(width / 2 - batteryLevelWidth, height / 2 + largeFontHeight + ( smallFontHeight- _batteryLowBitmap.getHeight())/ 2, _batteryMidBitmap);
         }
         dc.drawText(width/2+ _batteryLowBitmap.getWidth() / 2, height / 2 + largeFontHeight, _font, batteryLevelStr, Graphics.TEXT_JUSTIFY_CENTER);
     }
