@@ -1,0 +1,8 @@
+<fonts>
+    <font id="Freshman" filename="Freshman_64.fnt" antialias="true"/>
+    <!-- <font id="Metrics" filename="metrics_16.fnt" antialias="true"/> -->
+    <font id="MetricsIcon" filename="icon_metrics_16.fnt" antialias="true"/>
+    <font id="MetricsFont" filename="coolvetica_num_32.fnt" antialias="true"/>
+    <!-- <font id="MetricsFont" filename="coolvetica_num_32.fnt" antialias="true"/> -->
+
+</fonts>

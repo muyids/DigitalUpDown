@@ -1,0 +1,32 @@
+
+<resources>
+	<properties>
+		<property id="AppVersion" type="string">1.0.2</property>
+		<property id="Theme" type="number">1</property>
+	</properties>
+
+	<settings>
+		<setting propertyKey="@Properties.Theme" title="选择主题：">
+			<settingConfig type="list">
+				<listEntry value="0">@Strings.ThemeDarkWhite</listEntry>
+				<listEntry value="1">@Strings.ThemeWhiteDark</listEntry>
+				<listEntry value="2">@Strings.ThemeBlueDark</listEntry>
+				<listEntry value="3">@Strings.ThemePinkDark</listEntry>
+				<listEntry value="4">@Strings.ThemeGreenDark</listEntry>
+				<listEntry value="5">@Strings.ThemeMonoLight</listEntry>
+				<listEntry value="6">@Strings.ThemeCornflowerBlueDark</listEntry>
+				<listEntry value="7">@Strings.ThemeLemonCreamDark</listEntry>
+				<listEntry value="8">@Strings.ThemeDaygloOrangeDark</listEntry>
+				<listEntry value="9">@Strings.ThemeRedDark</listEntry>
+				<listEntry value="10">@Strings.ThemeMonoDark</listEntry>
+				<listEntry value="11">@Strings.ThemeBlueLight</listEntry>
+				<listEntry value="12">@Strings.ThemeGreenLight</listEntry>
+				<listEntry value="13">@Strings.ThemeRedLight</listEntry>
+				<listEntry value="14">@Strings.ThemeVividYellowDark</listEntry>
+				<listEntry value="15">@Strings.ThemeDaygloOrangeLight</listEntry>
+				<listEntry value="16">@Strings.ThemeCornYellowDark</listEntry>
+		</settingConfig>
+		</setting>
+	</settings>
+</resources>
+

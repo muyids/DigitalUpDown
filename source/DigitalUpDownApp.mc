@@ -1,8 +1,11 @@
 import Toybox.Application;
 import Toybox.Lang;
-import Toybox.WatchUi;
+using Toybox.WatchUi as Ui;
+using Toybox.Application.Properties as Prop;
 
 class DigitalUpDownApp extends Application.AppBase {
+
+    var mView;
 
     function initialize() {
         AppBase.initialize();
@@ -17,9 +20,21 @@ class DigitalUpDownApp extends Application.AppBase {
     }
 
     // Return the initial view of your application here
-    function getInitialView() as Array<Views or InputDelegates>? {
-        return [ new DigitalUpDownView() ] as Array<Views or InputDelegates>;
+    function getInitialView() as Array<Ui.Views or Ui.InputDelegates>? {
+        mView = new DigitalUpDownView();
+        onSettingsChanged(); // After creating view.
+        return [ mView ] as Array<Ui.Views or Ui.InputDelegates>;
     }
+
+
+	// New app settings have been received so trigger a UI update
+	function onSettingsChanged() {
+
+		mView.onSettingsChanged(); // Calls checkPendingWebRequests().
+
+		Ui.requestUpdate();
+	}
+
 
 }
 

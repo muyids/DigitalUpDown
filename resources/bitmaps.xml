@@ -1,6 +1,17 @@
 <resources>
-    <bitmap id="LauncherIcon" filename="images/icon.png" />
-    <bitmap id="HeartRateIcon" filename="images/heart_rate.svg" />
+    <bitmap id="LauncherIcon" filename="images/icon.png" >
+        <palette disableTransparency="true">
+            <!-- Logo is black on white text, so using four colors to get shading while reducing the color depth to 2 bpp -->
+            <color>FFFFFF</color>
+            <color>AAAAAA</color>
+            <color>555555</color>
+            <color>000000</color>
+        </palette>
+    </bitmap>
+
+    <bitmap id="HeartRateIcon" filename="images/heart_rate.svg">
+
+    </bitmap>
     <bitmap id="BatteryMidIcon" filename="images/battery_high.svg" />
     <bitmap id="BatteryLowIcon" filename="images/battery_low.svg" />
     <bitmap id="CalorieIcon" filename="images/calorie.svg" />
