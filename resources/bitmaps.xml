@@ -8,12 +8,4 @@
             <color>000000</color>
         </palette>
     </bitmap>
-
-    <bitmap id="HeartRateIcon" filename="images/heart_rate.svg">
-
-    </bitmap>
-    <bitmap id="BatteryMidIcon" filename="images/battery_high.svg" />
-    <bitmap id="BatteryLowIcon" filename="images/battery_low.svg" />
-    <bitmap id="CalorieIcon" filename="images/calorie.svg" />
-    <bitmap id="StepsIcon" filename="images/steps.svg" />
 </resources>

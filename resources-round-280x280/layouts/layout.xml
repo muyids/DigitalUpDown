@@ -2,7 +2,7 @@
     <drawable id="Background" />
 
     <drawable id="RightArea" class="RightArea">
-        <param name="locX">153</param>
+        <param name="locX">195</param>
         <param name="locY">61</param>
         <param name="width">64</param>
         <param name="height">96</param>
@@ -23,8 +23,8 @@
     </drawable>
 
     <drawable id="BottomArea" class="BottomArea">
-        <param name="locX">90</param>
-        <param name="locY">190</param>
+        <param name="locX">120</param>
+        <param name="locY">250</param>
         <param name="width">40</param>
         <param name="height">25</param>
     </drawable>

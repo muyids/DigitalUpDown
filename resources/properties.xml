@@ -1,12 +1,15 @@
 
 <resources>
 	<properties>
-		<property id="AppVersion" type="string">1.0.2</property>
-		<property id="Theme" type="number">1</property>
+		<property id="AppVersion" type="string">2.0.0</property>
+		<property id="Theme" type="number">0</property>
+		<property id="Field1" type="number">0</property>
+		<property id="Field2" type="number">5</property>
+		<property id="Field3" type="number">7</property>
 	</properties>
 
 	<settings>
-		<setting propertyKey="@Properties.Theme" title="选择主题：">
+		<setting propertyKey="@Properties.Theme" title="Theme:">
 			<settingConfig type="list">
 				<listEntry value="0">@Strings.ThemeDarkWhite</listEntry>
 				<listEntry value="1">@Strings.ThemeWhiteDark</listEntry>
@@ -25,8 +28,85 @@
 				<listEntry value="14">@Strings.ThemeVividYellowDark</listEntry>
 				<listEntry value="15">@Strings.ThemeDaygloOrangeLight</listEntry>
 				<listEntry value="16">@Strings.ThemeCornYellowDark</listEntry>
-		</settingConfig>
+			</settingConfig>
 		</setting>
+		<setting propertyKey="@Properties.Field1" title="Field 1:">
+			<settingConfig type="list">
+			 	<listEntry value="0">@Strings.HeartRate</listEntry>
+				<!-- <listEntry value="1">@Strings.Battery</listEntry> -->
+				<listEntry value="5">@Strings.Steps</listEntry>
+				<listEntry value="6">@Strings.Upstairs</listEntry>
+				<listEntry value="7">@Strings.Calories</listEntry>
+				<!-- <listEntry value="8">@Strings.BodyBattery</listEntry> -->
+				<!-- <listEntry value="9">@Strings.Pressure</listEntry> -->
+				<listEntry value="10">@Strings.ActiveMinutes</listEntry>
+				<listEntry value="11">@Strings.Distance</listEntry>
+				<!-- <listEntry value="12">@Strings.Sunrise</listEntry>
+				<listEntry value="13">@Strings.Sunset</listEntry> -->
+				<!-- <listEntry value="14">@Strings.PulseOx</listEntry>
+				<listEntry value="15">@Strings.SedentaryReminder</listEntry>
+				<listEntry value="16">@Strings.Notification</listEntry>
+				<listEntry value="17">@Strings.Alarms</listEntry>
+				<listEntry value="18">@Strings.Humidity</listEntry>
+				<listEntry value="19">@Strings.SolarIntensity</listEntry>
+				<listEntry value="20">@Strings.Altitude</listEntry>
+				<listEntry value="21">@Strings.PM25</listEntry>
+				<listEntry value="22">@Strings.RecoveryTime</listEntry>
+				<listEntry value="23">@Strings.Thermometer</listEntry> -->
+
+			</settingConfig>
+		</setting>
+		<setting propertyKey="@Properties.Field2" title="Field 2:">
+			<settingConfig type="list">
+				<listEntry value="0">@Strings.HeartRate</listEntry>
+				<!-- <listEntry value="1">@Strings.Battery</listEntry> -->
+				<listEntry value="5">@Strings.Steps</listEntry>
+				<listEntry value="6">@Strings.Upstairs</listEntry>
+				<listEntry value="7">@Strings.Calories</listEntry>
+				<!-- <listEntry value="8">@Strings.BodyBattery</listEntry> -->
+				<!-- <listEntry value="9">@Strings.Pressure</listEntry> -->
+				<listEntry value="10">@Strings.ActiveMinutes</listEntry>
+				<listEntry value="11">@Strings.Distance</listEntry>
+				<!-- <listEntry value="12">@Strings.Sunrise</listEntry>
+				<listEntry value="13">@Strings.Sunset</listEntry> -->
+				<!-- <listEntry value="14">@Strings.PulseOx</listEntry>
+				<listEntry value="15">@Strings.SedentaryReminder</listEntry>
+				<listEntry value="16">@Strings.Notification</listEntry>
+				<listEntry value="17">@Strings.Alarms</listEntry>
+				<listEntry value="18">@Strings.Humidity</listEntry>
+				<listEntry value="19">@Strings.SolarIntensity</listEntry>
+				<listEntry value="20">@Strings.Altitude</listEntry>
+				<listEntry value="21">@Strings.PM25</listEntry>
+				<listEntry value="22">@Strings.RecoveryTime</listEntry>
+				<listEntry value="23">@Strings.Thermometer</listEntry> -->
+			</settingConfig>
+		</setting>
+		<setting propertyKey="@Properties.Field3" title="Field 3:">
+			<settingConfig type="list">
+				<listEntry value="0">@Strings.HeartRate</listEntry>
+				<!-- <listEntry value="1">@Strings.Battery</listEntry> -->
+				<listEntry value="5">@Strings.Steps</listEntry>
+				<listEntry value="6">@Strings.Upstairs</listEntry>
+				<listEntry value="7">@Strings.Calories</listEntry>
+				<!-- <listEntry value="8">@Strings.BodyBattery</listEntry> -->
+				<!-- <listEntry value="9">@Strings.Pressure</listEntry> -->
+				<listEntry value="10">@Strings.ActiveMinutes</listEntry>
+				<listEntry value="11">@Strings.Distance</listEntry>
+				<!-- <listEntry value="12">@Strings.Sunrise</listEntry>
+				<listEntry value="13">@Strings.Sunset</listEntry> -->
+				<!-- <listEntry value="14">@Strings.PulseOx</listEntry>
+				<listEntry value="15">@Strings.SedentaryReminder</listEntry>
+				<listEntry value="16">@Strings.Notification</listEntry>
+				<listEntry value="17">@Strings.Alarms</listEntry>
+				<listEntry value="18">@Strings.Humidity</listEntry>
+				<listEntry value="19">@Strings.SolarIntensity</listEntry>
+				<listEntry value="20">@Strings.Altitude</listEntry>
+				<listEntry value="21">@Strings.PM25</listEntry>
+				<listEntry value="22">@Strings.RecoveryTime</listEntry>
+				<listEntry value="23">@Strings.Thermometer</listEntry> -->
+			</settingConfig>
+		</setting>
+		
 	</settings>
 </resources>
 

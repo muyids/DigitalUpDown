@@ -26,15 +26,11 @@ class DigitalUpDownApp extends Application.AppBase {
         return [ mView ] as Array<Ui.Views or Ui.InputDelegates>;
     }
 
-
 	// New app settings have been received so trigger a UI update
 	function onSettingsChanged() {
-
 		mView.onSettingsChanged(); // Calls checkPendingWebRequests().
-
 		Ui.requestUpdate();
 	}
-
 
 }
 
