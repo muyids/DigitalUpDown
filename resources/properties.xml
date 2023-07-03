@@ -1,4 +1,3 @@
-
 <resources>
 	<properties>
 		<property id="AppVersion" type="string">2.0.0</property>
@@ -6,33 +5,25 @@
 		<property id="Field1" type="number">0</property>
 		<property id="Field2" type="number">5</property>
 		<property id="Field3" type="number">7</property>
+		<property id="OpenWeatherMapApiKey" type="string"></property>
 	</properties>
 
 	<settings>
 		<setting propertyKey="@Properties.Theme" title="Theme:">
 			<settingConfig type="list">
-				<listEntry value="0">@Strings.ThemeDarkWhite</listEntry>
-				<listEntry value="1">@Strings.ThemeWhiteDark</listEntry>
-				<listEntry value="2">@Strings.ThemeBlueDark</listEntry>
-				<listEntry value="3">@Strings.ThemePinkDark</listEntry>
-				<listEntry value="4">@Strings.ThemeGreenDark</listEntry>
-				<listEntry value="5">@Strings.ThemeMonoLight</listEntry>
-				<listEntry value="6">@Strings.ThemeCornflowerBlueDark</listEntry>
-				<listEntry value="7">@Strings.ThemeLemonCreamDark</listEntry>
-				<listEntry value="8">@Strings.ThemeDaygloOrangeDark</listEntry>
-				<listEntry value="9">@Strings.ThemeRedDark</listEntry>
-				<listEntry value="10">@Strings.ThemeMonoDark</listEntry>
-				<listEntry value="11">@Strings.ThemeBlueLight</listEntry>
-				<listEntry value="12">@Strings.ThemeGreenLight</listEntry>
-				<listEntry value="13">@Strings.ThemeRedLight</listEntry>
-				<listEntry value="14">@Strings.ThemeVividYellowDark</listEntry>
-				<listEntry value="15">@Strings.ThemeDaygloOrangeLight</listEntry>
-				<listEntry value="16">@Strings.ThemeCornYellowDark</listEntry>
+				<listEntry value="0">@Strings.ThemeRedWhite</listEntry>
+				<listEntry value="1">@Strings.ThemeBlueWhite</listEntry>
+				<listEntry value="2">@Strings.ThemeRedPink</listEntry>
+				<listEntry value="3">@Strings.ThemeBluePink</listEntry>
+				<listEntry value="4">@Strings.ThemeRedGreen</listEntry>
+				<listEntry value="5">@Strings.ThemeBlueGreen</listEntry>
+				<listEntry value="6">@Strings.ThemeRedYellow</listEntry>
+				<listEntry value="7">@Strings.ThemeBlueYellow</listEntry>
 			</settingConfig>
 		</setting>
 		<setting propertyKey="@Properties.Field1" title="Field 1:">
 			<settingConfig type="list">
-			 	<listEntry value="0">@Strings.HeartRate</listEntry>
+				<listEntry value="0">@Strings.HeartRate</listEntry>
 				<!-- <listEntry value="1">@Strings.Battery</listEntry> -->
 				<listEntry value="5">@Strings.Steps</listEntry>
 				<listEntry value="6">@Strings.Upstairs</listEntry>
@@ -41,13 +32,15 @@
 				<!-- <listEntry value="9">@Strings.Pressure</listEntry> -->
 				<listEntry value="10">@Strings.ActiveMinutes</listEntry>
 				<listEntry value="11">@Strings.Distance</listEntry>
+
+				<listEntry value="18">@Strings.Humidity</listEntry>
 				<!-- <listEntry value="12">@Strings.Sunrise</listEntry>
 				<listEntry value="13">@Strings.Sunset</listEntry> -->
 				<!-- <listEntry value="14">@Strings.PulseOx</listEntry>
 				<listEntry value="15">@Strings.SedentaryReminder</listEntry>
 				<listEntry value="16">@Strings.Notification</listEntry>
 				<listEntry value="17">@Strings.Alarms</listEntry>
-				<listEntry value="18">@Strings.Humidity</listEntry>
+				
 				<listEntry value="19">@Strings.SolarIntensity</listEntry>
 				<listEntry value="20">@Strings.Altitude</listEntry>
 				<listEntry value="21">@Strings.PM25</listEntry>
@@ -67,13 +60,14 @@
 				<!-- <listEntry value="9">@Strings.Pressure</listEntry> -->
 				<listEntry value="10">@Strings.ActiveMinutes</listEntry>
 				<listEntry value="11">@Strings.Distance</listEntry>
+				<listEntry value="18">@Strings.Humidity</listEntry>
 				<!-- <listEntry value="12">@Strings.Sunrise</listEntry>
 				<listEntry value="13">@Strings.Sunset</listEntry> -->
 				<!-- <listEntry value="14">@Strings.PulseOx</listEntry>
 				<listEntry value="15">@Strings.SedentaryReminder</listEntry>
 				<listEntry value="16">@Strings.Notification</listEntry>
 				<listEntry value="17">@Strings.Alarms</listEntry>
-				<listEntry value="18">@Strings.Humidity</listEntry>
+	
 				<listEntry value="19">@Strings.SolarIntensity</listEntry>
 				<listEntry value="20">@Strings.Altitude</listEntry>
 				<listEntry value="21">@Strings.PM25</listEntry>
@@ -92,6 +86,7 @@
 				<!-- <listEntry value="9">@Strings.Pressure</listEntry> -->
 				<listEntry value="10">@Strings.ActiveMinutes</listEntry>
 				<listEntry value="11">@Strings.Distance</listEntry>
+				<listEntry value="18">@Strings.Humidity</listEntry>
 				<!-- <listEntry value="12">@Strings.Sunrise</listEntry>
 				<listEntry value="13">@Strings.Sunset</listEntry> -->
 				<!-- <listEntry value="14">@Strings.PulseOx</listEntry>
@@ -106,7 +101,10 @@
 				<listEntry value="23">@Strings.Thermometer</listEntry> -->
 			</settingConfig>
 		</setting>
-		
+
+		<setting propertyKey="@Properties.OpenWeatherMapApiKey" title="@Strings.OpenWeatherMapApiKey">
+			<settingConfig type="alphaNumeric" maxLength="32"/>
+		</setting>
+
 	</settings>
 </resources>
-

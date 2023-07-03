@@ -1,24 +1,14 @@
 <resources>
-    <string id="AppName">DigitalUpDownApp</string>
+	<string id="AppName">DigitalUpDownApp</string>
 
-    <string id="ThemeDarkWhite">Dark (Light)</string>
-    <string id="ThemeWhiteDark">White (Dark)</string>
-    <string id="ThemeBlueDark">Blue (Dark)</string>
-	<string id="ThemePinkDark">Pink (Dark)</string>
-	<string id="ThemeRedDark">Red (Dark)</string>
-	<string id="ThemeGreenDark">Green (Dark)</string>
-	<string id="ThemeCornflowerBlueDark">Cornflower Blue (Dark)</string>
-	<string id="ThemeLemonCreamDark">Lemon Cream (Dark)</string>
-	<string id="ThemeVividYellowDark">Vivid Yellow (Dark)</string>
-	<string id="ThemeDaygloOrangeDark">Dayglo Orange (Dark)</string>
-	<string id="ThemeMonoDark">Mono (Dark)</string>
-	<string id="ThemeMonoLight">Mono (Light)</string>
-	<string id="ThemeBlueLight">Blue (Light)</string>
-	<string id="ThemeRedLight">Red (Light)</string>
-	<string id="ThemeGreenLight">Green (Light)</string>
-	<string id="ThemeDaygloOrangeLight">Dayglo Orange (Light)</string>
-	<string id="ThemeCornYellowDark">Corn Yellow (Dark)</string>
-
+	<string id="ThemeRedWhite">Red (White)</string>
+	<string id="ThemeBlueWhite">Blue (White)</string>
+	<string id="ThemeRedPink">Red (Pink)</string>
+	<string id="ThemeBluePink">Blue (Pink)</string>
+	<string id="ThemeRedGreen">Red (Green)</string>
+	<string id="ThemeBlueGreen">Blue (Green)</string>
+	<string id="ThemeRedYellow">Red (Yellow)</string>
+	<string id="ThemeBlueYellow">Blue (Yellow)</string>
 
 	<string id="HeartRate">Heart Rate</string>
 	<string id="Battery">Battery</string>
@@ -41,5 +31,8 @@
 	<string id="PM25">PM2.5</string>
 	<string id="RecoveryTime">Recovery Time</string>
 	<string id="Thermometer">Thermometer</string>
+
+
+	<string id="OpenWeatherMapApiKey">OpenWeatherMap API Key:</string>
 
 </resources>

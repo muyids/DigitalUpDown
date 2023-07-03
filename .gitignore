@@ -6,4 +6,4 @@ internal-mir/
 mir/
 *.prg
 *.prg.debug.xml
-
+*.iq

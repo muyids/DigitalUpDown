@@ -1,6 +1,12 @@
 <layout id="WatchFace">
-    <drawable id="Background" />
 
+    <drawable id="Background" class="Background">
+        <param name="locX">0</param>
+        <param name="locY">0</param>
+        <param name="width">208</param>
+        <param name="height">208</param>
+    </drawable>
+    
     <drawable id="RightArea" class="RightArea">
         <param name="locX">147</param>
         <param name="locY">61</param>

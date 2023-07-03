@@ -1,31 +1,26 @@
-# 简约数字表盘(中文)
+# Minimalist Digital
 
+![](./assets/hero.jpg)
 
-## Release Notes
+## Description
 
-### 1.0.2
+**DONATIONS:**
 
-1. 重构Layout，使用drawable配合class实现布局重构
-1. 右侧数据项增加：
-    - 压力
-    - 身体电量
-    - 训练恢复时间
-    - 气温（佳明彩云）
-    - 气温范围（佳明彩云）
-    
+http://paypal.me/muyids
 
-### 1.0.1 
+Data Fields Settings:
 
-修改：
-1. 修复了图标颜色，使其保持一致
-1. 修改图标资源为 SVG 格式
-1. 使用 Icon Font 来显示图标
-1. 支持根据Settings配置数据项
-1. 支持动态配置多列数据项
+-   Weather
+-   Heart Rate
+-   Battery
+-   Steps
+-   Floors Climbed
+-   Calories
+-   Active Minutes per Day
+-   Distance
 
-### 1.0.0
+## What’s New
 
-简单的数字表盘，显示时间、日期、卡路里、步数、心率、电池电量
-
-
-
+-   v3.0.0 2023/07/06 Support multiple languages; Fix the bug of the metrics icon not being displayed on certain device models; Integrate weather, using the OpenWeatherMap API;
+-   v2.0.0 2023/07/02 Support for selecting themes and data；Adjust the UI and Layouts；Fixed the issue of misalignment between icons and text；
+-   v1.0.0 2023/06/26 first version out, still might be some flaws
