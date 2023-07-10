@@ -1,0 +1,36 @@
+<resources>
+	<string id="AppName">上下数字表盘</string>
+
+	<string id="ThemeRedWhite">红（白）</string>
+	<string id="ThemeBlueWhite">蓝（白）</string>
+	<string id="ThemeRedPink">红（粉）</string>
+	<string id="ThemeBluePink">蓝（粉）</string>
+	<string id="ThemeRedGreen">红（绿）</string>
+	<string id="ThemeBlueGreen">蓝（绿）</string>
+	<string id="ThemeRedYellow">红（黄）</string>
+	<string id="ThemeBlueYellow">蓝（黄）</string>
+
+	<string id="HeartRate">心率</string>
+	<string id="Battery">电池</string>
+	<string id="Steps">步数</string>
+	<string id="Upstairs">上楼</string>
+	<string id="Calories">卡路里</string>
+	<string id="BodyBattery">身体电池</string>
+	<string id="Pressure">压力</string>
+	<string id="ActiveMinutes">活跃分钟</string>
+	<string id="Distance">距离</string>
+	<string id="SunriseSunset">日出/日落</string>
+	<string id="PulseOx">脉搏血氧</string>
+	<string id="SedentaryReminder">久坐提醒</string>
+	<string id="Notification">通知</string>
+	<string id="Alarms">闹钟</string>
+	<string id="Humidity">湿度</string>
+	<string id="SolarIntensity">太阳能强度</string>
+	<string id="Altitude">海拔</string>
+	<string id="PM25">PM2.5</string>
+	<string id="RecoveryTime">恢复时间</string>
+	<string id="Thermometer">温度</string>
+
+	<string id="OpenWeatherMapApiKey">OpenWeatherMap API密钥：</string>
+
+</resources>

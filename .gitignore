@@ -7,3 +7,4 @@ mir/
 *.prg
 *.prg.debug.xml
 *.iq
+*-settings.json

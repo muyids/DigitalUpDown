@@ -99,8 +99,8 @@ class DigitalUpDownApp extends App.AppBase {
         );
         if (location) {
             location = location.toDegrees(); // Array of Doubles.
-            gLocationLat = location[0].toFloat();
-            gLocationLng = location[1].toFloat();
+            gLocationLng = location[0].toFloat();
+            gLocationLat = location[1].toFloat();
 
             Application.Storage.setValue("LastLocationLat", gLocationLat);
             Application.Storage.setValue("LastLocationLng", gLocationLng);

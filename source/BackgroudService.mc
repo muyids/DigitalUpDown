@@ -39,11 +39,7 @@ class BackgroundService extends Sys.ServiceDelegate {
             // Weather.
             if (pendingWebRequests["OpenWeatherMapCurrent"] != null) {
                 var apiKey = Prop.getValue("OpenWeatherMapApiKey");
-                var appid =
-                    apiKey != null && apiKey.length() > 0
-                        ? apiKey
-                        : "dddddddddddddddddddddddddddddddd";
-                Sys.println(getLogHeader() + "OWM key: " + appid);
+
                 makeWebRequest(
                     "https://api.openweathermap.org/data/2.5/weather",
                     {
@@ -53,22 +49,9 @@ class BackgroundService extends Sys.ServiceDelegate {
                         "lon" => Application.Storage.getValue(
                             "LastLocationLng"
                         ),
-
-                        // Polite request from Vince, developer of the Crystal Watch Face:
-                        //
-                        // Please do not abuse this API key, or else I will be forced to make thousands of users of Crystal
-                        // sign up for their own Open Weather Map free account, and enter their key in settings - a much worse
-                        // user experience for everyone.
-                        //
-                        // Crystal has been registered with OWM on the Open Source Plan, which lifts usage limits for free, so
-                        // that everyone benefits. However, these lifted limits only apply to the Current Weather API, and *not*
-                        // the One Call API. Usage of this key for the One Call API risks blocking the key for everyone.
-                        //
-                        // If you intend to use this key in your own app, especially for the One Call API, please create your own
-                        // OWM account, and own key. You should be able to apply for the Open Source Plan to benefit from the same
-                        // lifted limits as Crystal. Thank you.
-                        "appid" => appid,
-                        "units" => "metric", // Celcius.
+                        "appid" => apiKey != null && apiKey.length() > 0
+                            ? apiKey
+                            : "null",
                     },
                     method(:onReceiveOpenWeatherMapCurrent)
                 );
@@ -91,48 +74,50 @@ class BackgroundService extends Sys.ServiceDelegate {
 
     // Sample current weather:
     /*
-	{
-		"coord":{
-			"lon":-0.46,
-			"lat":51.75
-		},
-		"weather":[
-			{
-				"id":521,
-				"main":"Rain",
-				"description":"shower rain",
-				"icon":"09d"
-			}
-		],
-		"base":"stations",
-		"main":{
-			"temp":281.82,
-			"pressure":1018,
-			"humidity":70,
-			"temp_min":280.15,
-			"temp_max":283.15
-		},
-		"visibility":10000,
-		"wind":{
-			"speed":6.2,
-			"deg":10
-		},
-		"clouds":{
-			"all":0
-		},
-		"dt":1540741800,
-		"sys":{
-			"type":1,
-			"id":5078,
-			"message":0.0036,
-			"country":"GB",
-			"sunrise":1540709390,
-			"sunset":1540744829
-		},
-		"id":2647138,
-		"name":"Hemel Hempstead",
-		"cod":200
-	}
+    {
+        "coord": {
+            "lon": 116.24,
+            "lat": 39.54
+        },
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 308.86,
+            "feels_like": 306.87,
+            "temp_min": 308.86,
+            "temp_max": 308.86,
+            "pressure": 993,
+            "humidity": 19,
+            "sea_level": 993,
+            "grnd_level": 989
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 3.19,
+            "deg": 6,
+            "gust": 3.78
+        },
+        "clouds": {
+            "all": 60
+        },
+        "dt": 1688696855,
+        "sys": {
+            "country": "CN",
+            "sunrise": 1688676843,
+            "sunset": 1688730314
+        },
+        "timezone": 28800,
+        "id": 1807544,
+        "name": "Daxing",
+        "cod": 200
+    }
 	*/
     (:background_method)
     function onReceiveOpenWeatherMapCurrent(responseCode, data) {
@@ -150,6 +135,8 @@ class BackgroundService extends Sys.ServiceDelegate {
                 "temp" => data["main"]["temp"],
                 "humidity" => data["main"]["humidity"],
                 "icon" => data["weather"][0]["icon"],
+                "sunrise" => data["sys"]["sunrise"],
+                "sunset" => data["sys"]["sunset"],
             };
 
             // HTTP error: do not save.

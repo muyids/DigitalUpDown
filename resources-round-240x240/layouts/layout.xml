@@ -6,14 +6,14 @@
         <param name="width">240</param>
         <param name="height">240</param>
     </drawable>
-    
+
     <drawable id="RightArea" class="RightArea">
         <param name="locX">167</param>
         <param name="locY">61</param>
         <param name="width">64</param>
         <param name="height">96</param>
     </drawable>
-    
+
     <drawable id="CenterArea" class="CenterArea">
         <param name="locX">65</param>
         <param name="locY">20</param>
@@ -29,7 +29,7 @@
     </drawable>
 
     <drawable id="BottomArea" class="BottomArea">
-        <param name="locX">90</param>
+        <param name="locX">100</param>
         <param name="locY">210</param>
         <param name="width">40</param>
         <param name="height">25</param>

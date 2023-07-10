@@ -2,9 +2,12 @@ using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 using Toybox.Application as App;
 using Toybox.System as Sys;
-using Toybox.Time;
+using Toybox.Time as Time;
 using Toybox.Time.Gregorian;
 using Toybox.Activity as Activity;
+using Toybox.Weather as Weather;
+using Toybox.Position as Position;
+using Toybox.SensorHistory;
 
 enum /* FIELD_TYPES */ {
     // Pseudo-fields.
@@ -32,11 +35,62 @@ enum /* FIELD_TYPES */ {
     FIELD_TYPE_PM25 = 21,
     FIELD_TYPE_RECOVERY_TIME = 22,
     FIELD_TYPE_THERMOMETER = 23,
-    FIELD_TYPE_WEATHER = 30,
 }
 
 class RightArea extends Ui.Drawable {
     private var locX, locY, width, height;
+    function getLogHeader() {
+        var myTime = System.getClockTime();
+        return (
+            "[" +
+            myTime.hour.format("%02d") +
+            ":" +
+            myTime.min.format("%02d") +
+            ":" +
+            myTime.sec.format("%02d") +
+            "] "
+        );
+    }
+
+    // get the SensorHistoryIterator object
+    function getBodyBattery() {
+        // Check device for SensorHistory compatibility
+        if (
+            Toybox has :SensorHistory &&
+            Toybox.SensorHistory has :getBodyBatteryHistory
+        ) {
+            // Set up the method with parameters
+            var bbIterator = Toybox.SensorHistory.getBodyBatteryHistory({});
+            return bbIterator ? bbIterator.next().data.toNumber() : "--";
+        }
+        return null;
+    }
+
+    // get the SensorHistoryIterator object
+    function getPressure() {
+        // Check device for SensorHistory compatibility
+        if (
+            Toybox has :SensorHistory &&
+            Toybox.SensorHistory has :getPressureHistory
+        ) {
+            var pIterator = Toybox.SensorHistory.getPressureHistory({});
+            return pIterator ? pIterator.next().data.toNumber() / 1000 : "--";
+        }
+        return null;
+    }
+
+    function getOxygenSaturation() {
+        if (
+            Toybox has :SensorHistory &&
+            Toybox.SensorHistory has :getOxygenSaturationHistory
+        ) {
+            var o2Iterator = Toybox.SensorHistory.getOxygenSaturationHistory(
+                {}
+            );
+            return o2Iterator ? o2Iterator.next().data.toNumber() : "--";
+        }
+        return null;
+    }
 
     function initialize(params) {
         Drawable.initialize(params);
@@ -46,11 +100,12 @@ class RightArea extends Ui.Drawable {
         self.height = params[:height];
     }
 
-    function draw(dc) {
+    function draw(dc as Gfx.Dc) {
         drawField(dc, getFieldType(gField1Type), getFieldVal(gField1Type), -1);
         drawField(dc, getFieldType(gField2Type), getFieldVal(gField2Type), 0);
         drawField(dc, getFieldType(gField3Type), getFieldVal(gField3Type), 1);
     }
+
     private var iconArray = [
         "A",
         "B",
@@ -68,45 +123,45 @@ class RightArea extends Ui.Drawable {
         "N",
     ];
 
-    function getFieldType(fieldType) {
-        if (fieldType < 10) {
-            return fieldType;
+    function getFieldType(fieldIcon) {
+        if (fieldIcon < 10) {
+            return fieldIcon;
         }
-        return iconArray[fieldType - 10];
+        return iconArray[fieldIcon - 10];
     }
 
-    function getFieldVal(fieldType) {
+    function _getLocalTime(
+        location as Position.Location,
+        moment as Time.Moment
+    ) {
+        var localMoment = Gregorian.localMoment(location, moment);
+        var info = Gregorian.info(localMoment, Time.FORMAT_SHORT);
+        return Lang.format("$1$:$2$", [
+            info.hour.format("%02u"),
+            info.min.format("%02u"),
+        ]);
+    }
+
+    function getFieldVal(fieldIcon) {
         var info = ActivityMonitor.getInfo();
         var activityInfo = Activity.getActivityInfo();
-        var battery = "";
+        var location;
+        var today = new Time.Moment(Time.today().value());
         if (
-            fieldType.toString() == "1" ||
-            fieldType.toString() == "2" ||
-            fieldType.toString() == "3" ||
-            fieldType.toString() == "4"
+            fieldIcon.toString() == "1" ||
+            fieldIcon.toString() == "2" ||
+            fieldIcon.toString() == "3" ||
+            fieldIcon.toString() == "4"
         ) {
-            battery = Lang.format("$1$%", [
-                Sys.getSystemStats().battery.toLong(),
-            ]);
+            return Lang.format("$1$%", [Sys.getSystemStats().battery.toLong()]);
         }
         var weather;
         var weatherValue;
+        var sunsetMoment, sunriseMoment;
         var value = "...";
-        switch (fieldType) {
+        switch (fieldIcon) {
             case FIELD_TYPE_HEART_RATE:
                 value = activityInfo.currentHeartRate;
-                break;
-            case FIELD_TYPE_BATTERY:
-                value = battery;
-                break;
-            case FIELD_TYPE_BATTERY:
-                value = battery;
-                break;
-            case FIELD_TYPE_BATTERY:
-                value = battery;
-                break;
-            case FIELD_TYPE_BATTERY:
-                value = battery;
                 break;
             case FIELD_TYPE_STEPS:
                 value = info.steps;
@@ -118,9 +173,10 @@ class RightArea extends Ui.Drawable {
                 value = info.calories;
                 break;
             case FIELD_TYPE_BODY_BATTERY:
+                value = getBodyBattery();
                 break;
             case FIELD_TYPE_PRESSURE:
-                // value = gField9Val;
+                value = getPressure();
                 break;
             case FIELD_TYPE_ACTIVE_MINUTES:
                 value = info.activeMinutesWeek.total;
@@ -128,9 +184,8 @@ class RightArea extends Ui.Drawable {
             case FIELD_TYPE_DISTANCE:
                 value = info.distance / 100;
                 break;
-
             case FIELD_TYPE_PULSE_OX:
-                // value = gField5Val;
+                value = getOxygenSaturation();
                 break;
             case FIELD_TYPE_SEDENTARY_REMINDER:
                 // value = gField6Val;
@@ -147,45 +202,57 @@ class RightArea extends Ui.Drawable {
             case FIELD_TYPE_ALTITUDE:
                 // value = gField11Val;
                 break;
-            case FIELD_TYPE_WEATHER:
             case FIELD_TYPE_SUNRISE:
             case FIELD_TYPE_SUNSET:
+                if (gLocationLat == null) {
+                    break;
+                }
+                location = new Position.Location({
+                    :latitude => gLocationLat,
+                    :longitude => gLocationLng,
+                    :format => :degrees,
+                });
+
+                // if current time is am, show sunrise time
+                // if current time is pm, show sunset time
+                sunriseMoment = Weather.getSunrise(location, Time.now());
+                if (System.getClockTime().hour < 12) {
+                    return _getLocalTime(location, sunriseMoment);
+                }
+                sunsetMoment = Weather.getSunset(location, Time.now());
+                return _getLocalTime(location, sunsetMoment);
+
             case FIELD_TYPE_PM25:
             case FIELD_TYPE_HUMIDITY:
+            case FIELD_TYPE_THERMOMETER:
                 weather = App.Storage.getValue("OpenWeatherMapCurrent");
                 // Awaiting location.
                 if (gLocationLat == null) {
                     value = "gps?";
-
                     // Stored weather data available.
                 } else if (weather != null) {
                     // FIELD_TYPE_HUMIDITY.
-                    if (fieldType == FIELD_TYPE_HUMIDITY) {
+                    if (fieldIcon == FIELD_TYPE_HUMIDITY) {
                         weatherValue = weather["humidity"];
                         value = weatherValue.format(INTEGER_FORMAT) + "%";
-                    }
-
-                    // FIELD_TYPE_WEATHER.
-                    if (fieldType == FIELD_TYPE_WEATHER) {
-                        weatherValue = weather["temp"]; // Celcius.
+                    } else if (fieldIcon == FIELD_TYPE_THERMOMETER) {
+                        weatherValue = weather["temp"] / 10;
                         value = weatherValue.format(INTEGER_FORMAT) + "°C";
                     }
-                    // Awaiting response.
                 } else if (
                     App.Storage.getValue("PendingWebRequests") != null &&
                     App.Storage.getValue("PendingWebRequests")[
                         "OpenWeatherMapCurrent"
                     ]
                 ) {
-                    value = "%";
+                    value = "--";
                 }
                 break;
+
             case FIELD_TYPE_RECOVERY_TIME:
                 // value = gField13Val;
                 break;
-            case FIELD_TYPE_THERMOMETER:
-                // value = gField14Val;
-                break;
+
             default:
                 value = "0";
                 break;
@@ -196,9 +263,9 @@ class RightArea extends Ui.Drawable {
         return value.toString();
     }
 
-    function drawField(dc, fieldType, value, index) {
+    function drawField(dc, fieldIcon, value, index) {
         var iconWidth = dc.getTextWidthInPixels(
-            fieldType.toString(),
+            fieldIcon.toString(),
             _fMetricsIcon
         );
         dc.setColor(gIconColor, Graphics.COLOR_TRANSPARENT);
@@ -206,7 +273,7 @@ class RightArea extends Ui.Drawable {
             locX + iconWidth / 2,
             gHeight / 2 + _hMetricsFont * index,
             _fMetricsIcon,
-            fieldType,
+            fieldIcon,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
 

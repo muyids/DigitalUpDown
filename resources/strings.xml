@@ -19,8 +19,7 @@
 	<string id="Pressure">Pressure</string>
 	<string id="ActiveMinutes">Active Minutes</string>
 	<string id="Distance">Distance</string>
-	<string id="Sunrise">Sunrise</string>
-	<string id="Sunset">Sunset</string>
+	<string id="SunriseSunset">Sunrise/Sunset</string>
 	<string id="PulseOx">Pulse Ox</string>
 	<string id="SedentaryReminder">Sedentary Reminder</string>
 	<string id="Notification">Notification</string>
@@ -31,7 +30,6 @@
 	<string id="PM25">PM2.5</string>
 	<string id="RecoveryTime">Recovery Time</string>
 	<string id="Thermometer">Thermometer</string>
-
 
 	<string id="OpenWeatherMapApiKey">OpenWeatherMap API Key:</string>
 
