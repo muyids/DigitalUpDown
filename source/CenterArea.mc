@@ -6,16 +6,9 @@ using Toybox.Time;
 using Toybox.Time.Gregorian;
 
 class CenterArea extends Ui.Drawable {
+    
     function initialize(params) {
         Drawable.initialize(params);
-        // Drawable.initialize({
-        //   :identifier => "CenterArea",
-        //   :locX => 70,
-        //   :locY => 100,
-        //   :width => 60,
-        //   :height => 60,
-        //   :visible => true
-        // });
     }
 
     function draw(dc) {

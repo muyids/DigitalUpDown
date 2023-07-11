@@ -10,8 +10,7 @@ using Toybox.Application.Storage as Prop;
 // Current location retrieved/saved in checkPendingWebRequests.
 // Persistence allows weather and sunrise/sunset features to be used after watch face restart, even if watch no longer has current
 // location available.
-var gLocationLat = null;
-var gLocationLng = null;
+var gLocationLat, gLocationLng;
 
 var gField1Type = "0",
     gField2Type = "5",
@@ -99,8 +98,8 @@ class DigitalUpDownApp extends App.AppBase {
         );
         if (location) {
             location = location.toDegrees(); // Array of Doubles.
-            gLocationLng = location[0].toFloat();
-            gLocationLat = location[1].toFloat();
+            gLocationLat = location[0].toFloat();
+            gLocationLng = location[1].toFloat();
 
             Application.Storage.setValue("LastLocationLat", gLocationLat);
             Application.Storage.setValue("LastLocationLng", gLocationLng);

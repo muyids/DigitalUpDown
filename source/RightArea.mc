@@ -158,7 +158,7 @@ class RightArea extends Ui.Drawable {
         var weather;
         var weatherValue;
         var sunsetMoment, sunriseMoment;
-        var value = "...";
+        var value = "--";
         switch (fieldIcon) {
             case FIELD_TYPE_HEART_RATE:
                 value = activityInfo.currentHeartRate;
@@ -188,19 +188,10 @@ class RightArea extends Ui.Drawable {
                 value = getOxygenSaturation();
                 break;
             case FIELD_TYPE_SEDENTARY_REMINDER:
-                // value = gField6Val;
-                break;
             case FIELD_TYPE_NOTIFICATION:
-                // value = gField7Val;
-                break;
             case FIELD_TYPE_ALARMS:
-            // value = gField8Val;
-
             case FIELD_TYPE_SOLAR_INTENSITY:
-                // value = gField10Val;
-                break;
             case FIELD_TYPE_ALTITUDE:
-                // value = gField11Val;
                 break;
             case FIELD_TYPE_SUNRISE:
             case FIELD_TYPE_SUNSET:
@@ -213,52 +204,46 @@ class RightArea extends Ui.Drawable {
                     :format => :degrees,
                 });
 
-                // if current time is am, show sunrise time
-                // if current time is pm, show sunset time
+                // if current time is am, show sunrise time, else show sunset time
                 sunriseMoment = Weather.getSunrise(location, Time.now());
                 if (System.getClockTime().hour < 12) {
-                    return _getLocalTime(location, sunriseMoment);
+                    value = _getLocalTime(location, sunriseMoment);
+                } else {
+                    sunsetMoment = Weather.getSunset(location, Time.now());
+                    value = _getLocalTime(location, sunsetMoment);
                 }
-                sunsetMoment = Weather.getSunset(location, Time.now());
-                return _getLocalTime(location, sunsetMoment);
-
+                break;
             case FIELD_TYPE_PM25:
             case FIELD_TYPE_HUMIDITY:
             case FIELD_TYPE_THERMOMETER:
                 weather = App.Storage.getValue("OpenWeatherMapCurrent");
-                // Awaiting location.
                 if (gLocationLat == null) {
-                    value = "gps?";
-                    // Stored weather data available.
+                    value = "--";
                 } else if (weather != null) {
-                    // FIELD_TYPE_HUMIDITY.
                     if (fieldIcon == FIELD_TYPE_HUMIDITY) {
                         weatherValue = weather["humidity"];
                         value = weatherValue.format(INTEGER_FORMAT) + "%";
                     } else if (fieldIcon == FIELD_TYPE_THERMOMETER) {
                         weatherValue = weather["temp"] / 10;
-                        value = weatherValue.format(INTEGER_FORMAT) + "°C";
+                        value = weatherValue.format(INTEGER_FORMAT) +";";
                     }
-                } else if (
+                } else if (App has :Storage &&
                     App.Storage.getValue("PendingWebRequests") != null &&
                     App.Storage.getValue("PendingWebRequests")[
                         "OpenWeatherMapCurrent"
-                    ]
+                    ] != null
                 ) {
                     value = "--";
                 }
                 break;
-
             case FIELD_TYPE_RECOVERY_TIME:
-                // value = gField13Val;
                 break;
-
             default:
-                value = "0";
+                value = "--";
                 break;
         }
         if (value == null) {
-            value = "0";
+            value = "--";
         }
         return value.toString();
     }
