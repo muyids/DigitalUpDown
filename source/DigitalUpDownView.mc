@@ -18,11 +18,8 @@ var gThemeColour;
 
 const INTEGER_FORMAT = "%d";
 
-// fonts
 var _fHourMinute, _fDate, _fMetricsIcon, _fMetricsFont;
-// font heights
 var _hHourMinute, _hDate, _hMetricsIcon, _hMetricsFont;
-// block widths
 var _wRightBlock, _wLeftBlock, _wCenterBlock, _wBottomBlock;
 
 class DigitalUpDownView extends Ui.WatchFace {
